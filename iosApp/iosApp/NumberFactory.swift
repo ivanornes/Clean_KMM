@@ -11,20 +11,32 @@ import shared
 
 class NumberFactory {
     func makeNumberView() -> NumbersView {
+        let numberDataStore: NumberDataStore = InMemoryNumberDataStore()
         let viewModel = NumbersViewModel()
-        let incrementNumberInteractor = IncrementNumberInteractor()
-        let decrementNumberInteractor = DecrementNumberInteractor()
         let numberPresenter = NumberPresenter(numberView: viewModel)
-        var number = ANumber(value: 0)
+        
+        let incrementNumberInteractor: Incrementable =
+            IncrementablePresentationDecorator(
+                decoratee: IncrementableDataStoreDecorator(
+                    decoratee: IncrementNumberInteractor(
+                        numberDataStore: numberDataStore),
+                    dataStore: numberDataStore),
+                presenter: numberPresenter)
 
+        let decrementNumberInteractor: Decrementable =
+            DecrementablePresentationDecorator(
+                decoratee: DecrementableDataStoreDecorator(
+                    decoratee: DecrementNumberInteractor(
+                        numberDataStore: numberDataStore),
+                    dataStore: numberDataStore),
+                presenter: numberPresenter)
+        
         let view = NumbersView(contentViewModel: viewModel)
         viewModel.increment = {
-            number = incrementNumberInteractor.increment(number: number)
-            numberPresenter.display(number: number)
+            incrementNumberInteractor.increment()
         }
         viewModel.decrement = {
-            number = decrementNumberInteractor.decrement(number: number)
-            numberPresenter.display(number: number)
+            decrementNumberInteractor.decrement()
         }
         return view
     }

@@ -1,3 +1,3 @@
-package com.example.kmm.Presenters
+package com.example.kmm.presenters
 
 data class NumberViewModel(val number: String)

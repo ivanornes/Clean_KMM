@@ -1,6 +1,6 @@
-package com.example.kmm.Presenters
+package com.example.kmm.presenters
 
-import com.example.kmm.Entities.ANumber
+import com.example.kmm.entities.ANumber
 
 class NumberPresenter(private val numberView: NumberView) {
 
