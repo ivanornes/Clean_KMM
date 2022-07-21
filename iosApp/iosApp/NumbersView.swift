@@ -29,8 +29,8 @@ public struct NumbersView: View {
     }
 }
 
-//struct ContentView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        NumbersView(contentViewModel: .init())
-//    }
-//}
+struct NumbersView_Previews: PreviewProvider {
+    static var previews: some View {
+        NumbersView(contentViewModel: .init())
+    }
+}

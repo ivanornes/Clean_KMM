@@ -11,8 +11,6 @@ import com.example.kmm.Presenters.NumberViewModel
 import com.example.kmm.UseCases.DecrementNumberInteractor
 import com.example.kmm.UseCases.IncrementNumberInteractor
 
-
-
 class MainActivity : AppCompatActivity(), NumberView {
 
     private var number = ANumber(0)
