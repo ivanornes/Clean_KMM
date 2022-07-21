@@ -9,5 +9,8 @@ In the shared core you can find:
 - Use cases: Increment and decrement interactors.
 - Presenters: Adapts the model to what the UI should display.
 
-Any comments are welcome.
+The `MainActivity.kt` and `NumberFactory.swift` act as composition roots, where the dependencies are instantiated and 
+composed. 
+The side effects of storing in memory and displaying the updated number are handled by decorators.
 
+Any comments are welcome.
